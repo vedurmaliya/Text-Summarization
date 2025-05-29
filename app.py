@@ -7,7 +7,7 @@ from langchain_community.document_loaders import YoutubeLoader,UnstructuredURLLo
 
 ## sstreamlit APP
 st.set_page_config(page_title="LangChain: Summarize Text From YT or Website", page_icon="🦜")
-st.title("🦜 LangChain: Summarize Text From YT or Website")
+st.title("LangChain: Summarize Text From YT or Website")
 st.subheader('Summarize URL')
 
 
@@ -15,6 +15,8 @@ st.subheader('Summarize URL')
 ## Get the Groq API Key and url(YT or website)to be summarized
 with st.sidebar:
     groq_api_key=st.text_input("Groq API Key",value="",type="password")
+if not groq_api_key:
+    st.error("🔑 Please enter your API key.")
 
 generic_url=st.text_input("URL",label_visibility="collapsed")
 
@@ -22,7 +24,7 @@ generic_url=st.text_input("URL",label_visibility="collapsed")
 llm =ChatGroq(model="Gemma-9b-It", groq_api_key=groq_api_key)
 
 prompt_template="""
-Provide a summary of the following content in 300 words:
+Provide the most important points from the content in 300 words:
 Content:{text}
 
 """

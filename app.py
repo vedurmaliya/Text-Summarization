@@ -21,7 +21,7 @@ if not groq_api_key:
 generic_url=st.text_input("URL",label_visibility="collapsed")
 
 ## Gemma Model USsing Groq API
-llm =ChatGroq(model="Gemma-9b-It", groq_api_key=groq_api_key)
+llm =ChatGroq(model="Gemma-7b-It", groq_api_key=groq_api_key)
 
 prompt_template="""
 Provide the most important points from the content in 300 words:
